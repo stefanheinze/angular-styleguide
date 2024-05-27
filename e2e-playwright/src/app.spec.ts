@@ -18,16 +18,31 @@ test.describe('Product master page', () => {
     await masterPage.navigateTo();
   });
 
-  test('should display title', async () => {
-    expect(await masterPage.getTitle()).toEqual('GET YOUR ICE CREAM');
-  });
+  test(
+    'should display title',
+    {
+      annotation: [{ type: 'Requirement', description: 'Requirement/Specification-Reference-001' }],
+    },
+    async () => {
+      expect(await masterPage.getTitle()).toEqual('GET YOUR ICE CREAM');
+    },
+  );
 
-  test('should navigate to correct detail page when product was clicked', async () => {
-    const productName = 'Mint';
-    const productImage = await masterPage.getProductImageByName(productName);
+  test(
+    'should navigate to correct detail page when product was clicked',
+    {
+      annotation: [
+        { type: 'Requirement', description: 'Requirement/Specification-Reference-001' },
+        { type: 'Requirement', description: 'Requirement/Specification-Reference-002' },
+      ],
+    },
+    async () => {
+      const productName = 'Mint';
+      const productImage = await masterPage.getProductImageByName(productName);
 
-    await productImage?.click();
+      await productImage?.click();
 
-    expect(await detailPage.getTitle()).toEqual(productName);
-  });
+      expect(await detailPage.getTitle()).toEqual(productName);
+    },
+  );
 });

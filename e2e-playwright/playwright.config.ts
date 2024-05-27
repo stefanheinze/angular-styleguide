@@ -9,6 +9,7 @@ const config: PlaywrightTestConfig = {
   use: {
     headless: true,
   },
+  reporter: [['list'], ['./custom-reporter.ts']],
   projects: [
     {
       name: 'Desktop Chrome',
